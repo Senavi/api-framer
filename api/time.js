@@ -15,6 +15,7 @@ export default async function handler(request, response) {
       // Create the response data object
       const responseData = {
           message: "Hello World",
+          number: 192,
           time: time,
           datetime: datetime
       };
