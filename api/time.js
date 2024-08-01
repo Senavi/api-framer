@@ -15,20 +15,22 @@ export default async function handler(request, response) {
       // Create the response data object
       const responseData = {
           message: "Hello World",
-          city: "Helsinki",
           time: time,
           datetime: datetime
       };
+
+      // Stringify the response data
+      const jsonResponse = JSON.stringify(responseData);
 
       // Set headers for CORS
       response.setHeader('Access-Control-Allow-Origin', '*');
       response.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
       response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-      console.log('Response data:', responseData); // Log the response data
+      console.log('Response data:', jsonResponse); // Log the response data
 
       // Send the response
-      return response.status(200).json(responseData);
+      return response.status(200).send(jsonResponse);
   } catch (error) {
       console.error('Error during function execution:', error); // Log any errors
       return response.status(500).json({ error: error.message });
