@@ -10,7 +10,7 @@ export default {
       headers.set('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS')
       headers.set('Access-Control-Allow-Headers', 'Content-Type')
 
-      const responseData = JSON.stringify({ text: "Hello!" })
+      const responseData = JSON.stringify(serverStatus)
 
       return new Response(responseData, { headers })
   }
