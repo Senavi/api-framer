@@ -8,12 +8,15 @@ export default async function handler(request, response) {
 
       // Extract time from datetime
       const time = new Date(apiData.datetime).toTimeString().split(' ')[0];
+      
+      // Create the combined datetime string
+      const datetime = new Date(apiData.datetime).toLocaleString();
 
       // Create the response data object
       const responseData = {
           message: "Hello World",
           time: time,
-          datetime: apiData.timezone
+          datetime: datetime
       };
 
       // Set headers for CORS
