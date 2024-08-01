@@ -1,14 +1,20 @@
-const fetch = require('node-fetch');
-
-module.exports = async (req, res) => {
+export default async function handler(request, response) {
   try {
-    const response = await fetch('http://worldtimeapi.org/api/timezone/Europe/Helsinki');
-    const data = await response.json();
-    console.log(data.datetime);
+      console.log('Request received:', request.url); // Log the request URL
 
-    res.status(200).json({ datetime: data.datetime });
+      const responseData = {
+          message: "Hello World"
+      };
+
+      response.setHeader('Access-Control-Allow-Origin', '*');
+      response.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+      response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+      console.log('Response data:', responseData); // Log the response data
+
+      return response.status(200).json(responseData);
   } catch (error) {
-    console.error('Error fetching datetime:', error);
-    res.status(500).json({ error: 'Failed to fetch datetime' });
+      console.error('Error during function execution:', error); // Log any errors
+      return response.status(500).json({ error: error.message });
   }
-};
+}
