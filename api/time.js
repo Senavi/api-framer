@@ -12,7 +12,8 @@ export default async function handler(request, response) {
       // Create the response data object
       const responseData = {
           message: "Hello World",
-          time: time // Add only the time part
+          time: time,
+          datetime: apiData.utc_datetime
       };
 
       // Set headers for CORS
