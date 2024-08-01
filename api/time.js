@@ -14,7 +14,7 @@ export default async function handler(request, response) {
 
       // Create the response data object
       const responseData = {
-          message: "Hello World",
+          message: "Updated",
           message2: "Fucking api",
           time: time,
           datetime: datetime
