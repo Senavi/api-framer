@@ -6,10 +6,13 @@ export default async function handler(request, response) {
       const apiResponse = await fetch('http://worldtimeapi.org/api/timezone/Europe/Helsinki');
       const apiData = await apiResponse.json();
 
+      // Extract time from datetime
+      const time = new Date(apiData.datetime).toTimeString().split(' ')[0];
+
       // Create the response data object
       const responseData = {
           message: "Hello World",
-          datetime: apiData.datetime // Add datetime from the API response
+          time: time // Add only the time part
       };
 
       // Set headers for CORS
